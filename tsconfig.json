@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES2015",
+    "sourceMap": true,
+    "outDir": "dist",
+    // "rootDir": "./src"
+  },
+  "include": [
+    "src/main.ts",
+    "src/blockchain.ts",
+    "src/blockchainValidations.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
