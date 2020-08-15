@@ -1,5 +1,6 @@
 import * as CryptoJS from 'crypto-js';
-import {isValidChain, isValidNewBlock} from './blochainValidations'
+import {isValidChain, isValidNewBlock} from './blochainValidations';
+import {broadcastLatest} from './p2p';
 
 class Block {
     public index: number;
@@ -55,6 +56,7 @@ const generateNextBlock = (data: string): Block => {
     const newBlock: Block = new Block(nextIndex, nextHash, previousBlock.hash, nextTimestamp, data);
     mineBlock(newBlock);
     console.log(newBlock)
+    broadcastLatest();
     return newBlock
     // return all blockchain
 
@@ -66,14 +68,11 @@ const replaceChain = (newBlocks: Block[]) => {
     if (isValidChain(newBlocks) && newBlocks.length > getBlockchain().length) {
         console.log('Received blockchain is valid. Replacing current blockchain with received blockchain');
         blockchain = newBlocks;
-        // broadcastLatest();
+        broadcastLatest();
     } else {
         console.log('Received blockchain invalid');
     }
 };
-
-
-
 
 
 export{
@@ -82,5 +81,7 @@ export{
     getLatestBlock,
     calculateHashForBlock,
     getBlockchain,
-    generateNextBlock
+    generateNextBlock,
+    mineBlock,
+    replaceChain
 }

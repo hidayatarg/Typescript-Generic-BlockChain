@@ -44,4 +44,8 @@ const isValidBlockStructure = (block: Block): boolean => {
         && typeof block.data === 'string';
 };
 
-export {isValidChain, isValidNewBlock}
+export {
+    isValidChain,
+    isValidNewBlock,
+    isValidBlockStructure
+}
