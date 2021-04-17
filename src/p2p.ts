@@ -130,7 +130,7 @@ const handleBlockchainResponse = (receivedBlocks: Block[]) => {
             replaceChain(receivedBlocks);
         }
     } else {
-        console.log('received blockchain is not longer than received blockchain. Do nothing');
+        console.log('received blockchain is not longer than current blockchain. Do nothing');
     }
 };
 
